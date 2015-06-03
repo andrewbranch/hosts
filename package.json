@@ -1,0 +1,19 @@
+{
+  "name": "hosts",
+  "version": "1.0.0",
+  "description": "Command-line utility for updating /etc/hosts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewbranch/hosts.git"
+  },
+  "author": "Andrew Branch <andrewbranch@mail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewbranch/hosts/issues"
+  },
+  "homepage": "https://github.com/andrewbranch/hosts#readme"
+}
