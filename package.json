@@ -2,7 +2,6 @@
   "name": "hosts",
   "version": "1.0.0",
   "description": "Command-line utility for updating /etc/hosts",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,8 +11,15 @@
   },
   "author": "Andrew Branch <andrewbranch@mail.com>",
   "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "hosts": "index.js"
+  },
   "bugs": {
     "url": "https://github.com/andrewbranch/hosts/issues"
   },
-  "homepage": "https://github.com/andrewbranch/hosts#readme"
+  "homepage": "https://github.com/andrewbranch/hosts#readme",
+  "dependencies": {
+    "commander": "^2.8.1"
+  }
 }
