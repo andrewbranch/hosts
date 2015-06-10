@@ -2,8 +2,8 @@ var fs = require('fs'),
     Entry = require('./entry'),
     parseLine = require('./parse-line');
 
-function HostsFile() {
-  this.path = '/etc/hosts';
+function HostsFile(path) {
+  this.path = path;
   this.stats = fs.statSync(this.path);
   this.lines = null;
   

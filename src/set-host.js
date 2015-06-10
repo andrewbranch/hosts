@@ -2,9 +2,9 @@ var fs = require('fs'),
     escapeRegex = require('./lib/escape-regex'),
     HostsFile = require('./lib/hosts-file');
 
-module.exports = function(ip, hostname) {
+module.exports = function(ip, hostname, filePath) {
   
-  var hostsFile = new HostsFile();
+  var hostsFile = new HostsFile(filePath);
   
   // Hostname is already mapped
   var existingEntry = hostsFile.find({ hostname: hostname })[0];

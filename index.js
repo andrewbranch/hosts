@@ -7,5 +7,7 @@ var package = require('./package.json'),
 program
   .version(package.version)
   .arguments('<ip> <hostname>')
-  .action(setHost)
+  .action(function(ip, hostname) {
+    setHost(ip, hostname, '/etc/hosts'); // TODO read from option
+  })
   .parse(process.argv);
