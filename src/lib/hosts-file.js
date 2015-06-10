@@ -51,6 +51,7 @@ HostsFile.prototype.write = function() {
   
   try {
     fs.writeFileSync(this.path, contents);
+    this.contents = contents;
   } catch (err) {
     console.error(err);
     process.exit(1);
