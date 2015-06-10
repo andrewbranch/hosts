@@ -4,19 +4,19 @@ var fs = require('fs'),
 
 module.exports = function(ip, hostname) {
   
-  var hostsFile = new HostsFile(true),
-      hosts = hostsFile.read();
+  var hostsFile = new HostsFile();
   
-  // IP address is already mapped
-  var matches = hosts.match(new RegExp('^\\s*([0-9.:]+)\\s+(' + escapeRegex(hostname) + ')', 'm'));
-  if (matches) {
-    var oldIp = matches[1];
+  // Hostname is already mapped
+  var existingEntry = hostsFile.find({ hostname: hostname })[0];
+  if (existingEntry) {
+    var oldIp = existingEntry.ip;
     if (ip === oldIp) {
       console.log('%s already mapped to %s', ip, hostname);
       return process.exit(0);
     }
     
-    hostsFile.replaceEntry(matches[0], ip, hostname);
+    existingEntry.ip = ip;
+    hostsFile.write();
     console.log('Removed mapping from %s to %s', oldIp, hostname);
     console.log('Mapped %s to %s', ip, hostname);
   }
