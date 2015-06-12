@@ -5,7 +5,6 @@ var fs = require('fs'),
 
 function HostsFile(path) {
   this.path = path;
-  this.stats = fs.statSync(this.path);
   this.lines = null;
   
   this.read();
@@ -16,7 +15,11 @@ HostsFile.prototype.read = function() {
   try {
     this.contents = fs.readFileSync(this.path).toString();
   } catch (err) {
-    console.error(err);
+    if (err.code === 'ENOENT') {
+      console.error(color.red(' File %s doesn’t exist.\n Use the `--path` option to specify the location of your hosts file.'), this.path);
+    } else {
+      console.error(err);
+    }
     return process.exit(1);
   }
 };

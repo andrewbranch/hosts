@@ -7,7 +7,8 @@ var package = require('./package.json'),
 program
   .version(package.version)
   .arguments('<ip> <hostname>')
+  .option('-p, --path <value>', 'The absolute path to the hosts file. [/etc/hosts]', '/etc/hosts')
   .action(function(ip, hostname) {
-    setHost(ip, hostname, '/etc/hosts'); // TODO read from option
+    setHost(ip, hostname, program.path);
   })
   .parse(process.argv);
