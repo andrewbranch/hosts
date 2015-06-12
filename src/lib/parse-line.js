@@ -11,7 +11,7 @@ module.exports = function(line) {
       hostname = parts[2];
       
   if (!ip || !hostname) {
-    console.error('Could not parse file at line: %s', line);
+    console.error(color.red('Could not parse file at line: ') + line);
     return process.exit(1);
   }
   

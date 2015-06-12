@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    color = require('bash-color'),
     Entry = require('./entry'),
     parseLine = require('./parse-line');
 
@@ -58,7 +59,11 @@ HostsFile.prototype.write = function() {
     fs.writeFileSync(this.path, contents);
     this.contents = contents;
   } catch (err) {
-    console.error(err);
+    if (err.code === 'EACCES') {
+      console.error(color.red(' Permission was denied.\n Make sure you are running the command with `sudo`.'));
+    } else {
+      console.error(err);
+    }
     process.exit(1);
   }
 };
