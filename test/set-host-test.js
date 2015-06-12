@@ -19,6 +19,6 @@ describe('setHost', function() {
   it('should add a new host', function() {
     var filePath = path.resolve(__dirname, 'data/hosts_2');
     setHost('::1', 'is-the-loneliest-number', filePath);
-    assert.equal(fs.readFileSync(filePath).toString(), '# short\n::1 file\n::1 is-the-loneliest-number\n');
+    assert.equal(fs.readFileSync(filePath).toString(), '# short\n::1 file\n\n::1 is-the-loneliest-number');
   });
 });

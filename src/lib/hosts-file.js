@@ -44,6 +44,11 @@ HostsFile.prototype.find = function(query) {
   });
 };
 
+HostsFile.prototype.add = function(ip, hostname, index) {
+  index = index || this.lines.length + 1;
+  this.lines.splice(index, 0, new Entry(ip, hostname));
+};
+
 HostsFile.prototype.write = function() {
   var contents = this.lines.map(function(l) {
     return l.toString();

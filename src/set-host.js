@@ -19,6 +19,13 @@ module.exports = function(ip, hostname, filePath) {
     hostsFile.write();
     console.log('Removed mapping from %s to %s', oldIp, hostname);
     console.log('Mapped %s to %s', ip, hostname);
+    return process.exit(0);
   }
+  
+  // Add a new hostname
+  hostsFile.add(ip, hostname);
+  hostsFile.write();
+  console.log('Mapped %s to %s', ip, hostname);
+  return process.exit(0);
   
 };

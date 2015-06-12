@@ -103,6 +103,28 @@ describe('HostsFile', function() {
     });
   });
   
+  describe('add', function() {
+    
+    var hostsFile;
+    beforeEach(function() {
+      var filePath = path.resolve(__dirname, '../data/hosts_2');
+      hostsFile = new HostsFile(filePath);
+    });
+    
+    it('should add an entry to the end of the lines array', function() {
+      hostsFile.add('127.0.0.1', 'api');
+      assert.equal(hostsFile.lines[hostsFile.lines.length - 1].ip, '127.0.0.1');
+      assert.equal(hostsFile.lines[hostsFile.lines.length - 1].hostname, 'api');
+    });
+    
+    it('should add an entry at a specified index', function() {
+      hostsFile.add('127.0.0.1', 'api', 1);
+      assert.equal(hostsFile.lines[1].ip, '127.0.0.1');
+      assert.equal(hostsFile.lines[1].hostname, 'api');
+    });
+    
+  });
+  
   describe('write', function() {
     
     var hostsFile;
