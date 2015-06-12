@@ -1,6 +1,7 @@
 var assert = require('assert'),
     path = require('path'),
     fs = require('fs'),
+    resetHosts = require('../helpers/reset-hosts'),
     Entry = require('../../src/lib/entry'),
     HostsFile = require('../../src/lib/hosts-file'),
     parseLine = require('../../src/lib/parse-line');
@@ -111,7 +112,7 @@ describe('HostsFile', function() {
     });
     
     afterEach(function() {
-      fs.writeFileSync(hostsFile.path, '# short\n::1 file\n')
+      resetHosts(2);
     });
     
     it('should write unmodified contents when no changes exist', function() {
